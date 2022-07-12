@@ -17,8 +17,9 @@
           <li><a href="/" class="left brand-logo">&nbsp;&nbsp;VideogameCollector</a></li>
         </ul>
         <ul class="right">
-          <li><a href="/about">About</a></li>
-          <li><a href="/videogames">View My Video games</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'videogames_create' %}">Add a Videogame</a></li>
+          <li><a href="{% url 'index' %}">View My Video games</a></li>
         </ul>
       </div>
     </nav>
