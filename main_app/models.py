@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from datetime import date
 
 # Create your models here.
 CONSOLES = (
@@ -12,11 +13,22 @@ CONSOLES = (
     ('PC', 'Computer')
 )
 
+class Player(models.Model):
+    name = models.CharField(max_length=50)
+    number = models.IntegerField()
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse('players_detail', kwargs={'pk': self.id})
+
 class Videogame(models.Model):
     name = models.CharField(max_length=100)
     genre = models.CharField(max_length=100)
     description = models.TextField(max_length=250)
     release = models.IntegerField()
+    players = models.ManyToManyField(Player)
 
     def __str__(self):
         return self.name
